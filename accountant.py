@@ -43,12 +43,38 @@ elif sys.argv[1] == 'saldo':
 # opcja sprzedaz:
 elif sys.argv[1] == 'sprzedaz':
   # podano za malo lub za duzo argumentow:
-  if argumenty != 5:
+  if argumenty != 5 and argumenty > 2:
     print('Niewlasciwa liczba argumentow.')
     print('  >  accountant.py sprzedaz id_produktu cena ilosc')
   # podano wlasciwa ilosc argumentow:
   else:
-    pass
+    # jesli liczba argumentow 2 to tylko wyswietla "historie" z pliku
+    # jesli liczba argumentow 5 to dopisuje argumenty do listy i wyswietla
+    # uzupelniona liste
+    sprzedaz = list()
+    while True:
+      historia = input()
+      if historia == 'sprzedaz':
+        sprzedaz.append(input())
+        sprzedaz.append(int(input()))
+        sprzedaz.append(int(input()))
+      if historia == 'stop':
+        break
+    if argumenty == 5:
+      sprzedaz.append(sys.argv[2])
+      sprzedaz.append(int(sys.argv[3]))
+      sprzedaz.append(int(sys.argv[4]))
+    # wyswietlenie listy:
+    for i in range(0, len(sprzedaz), 3):
+      print('sprzedaz')
+      print(sprzedaz[i])
+      print(sprzedaz[i+1])
+      print(sprzedaz[i+2])
+    # podano tylko argument 'sprzedaz':
+    if argumenty == 2:
+      print('Wyswietlona zostala tylko historia operacji.')
+      print('Aby dodac kolejna pozycje podaj trzy kolejne argumenty:')
+      print('  >  accountant.py sprzedaz id_produktu cena ilosc')
 # opcja zakup:
 elif sys.argv[1] == 'zakup':
   # podano za malo lub za duzo argumentow:
