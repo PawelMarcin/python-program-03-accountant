@@ -158,9 +158,12 @@ else:
       # dodanie argumentow opcjonalnych (liczba_argumentow == 5)
       else:
         akcje = [argument, sys.argv[2], int(sys.argv[3]), int(sys.argv[4])]
-        if akcje[3] > stan_magazynu.get(akcje[1]) \
-            or not stan_magazynu.get(akcje[1]):
-          print('Za mala ilosc artykulu w magazynie.')
+        s = stan_magazynu.get(akcje[1])
+        if not s:
+          s = 0
+        if akcje[3] > s:
+          print('Brak wystarczajacej ilosci artykulu {} na stanie.'
+                .format(akcje[1]))
           drukuj_historie = False
         elif akcje[2] < 0 or akcje[3] < 0:
           print('Cena lub liczba sztuk nie moze byc ujemna.')
