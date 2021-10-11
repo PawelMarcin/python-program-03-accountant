@@ -149,7 +149,8 @@ else:
           saldo += akcje[1]
           indeks_do = len(historia)
         else:
-          print('Przekroczono dostepny limit srodkow.')
+          print('Wydatek: {} - Przekroczono dostepny limit srodkow: {}.'
+                .format(-1 * akcje[1], saldo))
           drukuj_historie = False
     elif argument == 'sprzedaz':
       # nie podano argumentow opcjonalnych
@@ -182,7 +183,8 @@ else:
         akcje = [argument, sys.argv[2], int(sys.argv[3]), int(sys.argv[4])]
         koszt = akcje[2] * akcje[3]
         if koszt > saldo:
-          print('Przekroczono dostepny limit srodkow.')
+          print('Koszt: {} - Przekroczono dostepny limit srodkow: {}.'
+                .format(koszt, saldo))
           drukuj_historie = False
         elif akcje[2] < 0 or akcje[3] < 0:
           print('Cena lub liczba sztuk nie moze byc ujemna.')
