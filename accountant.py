@@ -211,7 +211,10 @@ else:
       # podano argumenty opcjonalne (liczba_argumentow > 2)
       else:
         for k in sys.argv[2:]:
-          print(k + ': ' + str(stan_magazynu.get(k)))
+          v = stan_magazynu.get(k)
+          if not v:
+            v = 0
+          print(k + ': ' + str(v))
     elif argument == 'konto':
       drukuj_historie = False
       print(saldo)
