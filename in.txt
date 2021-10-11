@@ -1,6 +1,6 @@
 saldo
 1000000
-wpłata początkowa
+wplata poczatkowa
 saldo
 -140000
 zus
